@@ -1,0 +1,52 @@
+type Character {
+    name: String,
+    stamina: Int,
+    skill: Int,
+    luck: Int,
+    gold: Int,
+    provision: Int,
+    equipment: String,
+    notes: String
+}
+type Fight {
+    creature: String,
+    skill: String,
+    stamina: String,
+}
+type Query {
+    getCharacters(limite: Int, offset: Int): [Character]
+    getCharacter(id: ID): Character
+    totalCharacters: Int
+
+    getFights(limite: Int, offset: Int): [Character]
+}
+
+
+input CharacterInput {
+    id: ID
+    name: String
+    stamina: Int
+    skill: Int
+    luck: Int
+    gold: Int
+    provision: Int
+    equipment: String
+    notes: String 
+}
+
+input FightInput {
+    creature: String
+    skill: String
+    stamina: String
+}
+
+type Mutation {
+    createCharacter(input: CharacterInput) : Character
+    updateCharacter(input: CharacterInput) : Character
+    deteleteCharacter(id: ID!) : String
+
+
+    createFight(input: FightInput) : Fight
+    updateFight(input: FightInput) : Fight
+    deleteFight(id: ID!) : String
+}
